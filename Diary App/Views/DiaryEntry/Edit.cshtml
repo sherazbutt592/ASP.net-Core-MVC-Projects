@@ -1,0 +1,32 @@
+﻿@model DiaryEntry
+<div class="container m-auto">
+    <div class="card mt-4">
+        <div class="card-header bg-primary text-light">
+            <h1>Edit Diary Entry</h1>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <div class="mt-4">
+                    <label asp-for="Title" class="form-label mb-3">Title</label>
+                    <input class="form-control" type="text" asp-for="Title" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="mt-4">
+                    <label asp-for="Content" class="form-label mb-3">Content</label>
+                    <textarea class="form-control" rows="4" asp-for="Content"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="mt-4">
+                    <label asp-for="Created" class="form-label mb-3">Date</label>
+                    <input class="form-control" type="date" asp-for="Created" readonly value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    <span asp-validation-for="Created" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Edit</button>
+                <button class="btn btn-danger mt-4" asp-controller="DiaryEntry" asp-action="Index">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
