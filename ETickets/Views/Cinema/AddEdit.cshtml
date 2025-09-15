@@ -1,0 +1,46 @@
+﻿@model Cinema
+@{
+    ViewBag.Title = $"{ViewBag.Operation} Cinema";
+}
+<h3>@ViewBag.Operation Cinema</h3>
+<div class="w-50 mx-auto">
+    <form asp-action="AddEdit" asp-controller="Cinema" method="post" enctype="multipart/form-data">
+        @* preview Image *@
+        <div class="mb-3 d-flex justify-content-center">
+            <img src="@Url.Content("~/Images/" + @Model.Logo)" alt="Preview Image" id="preview" class="@(ViewBag.Operation == "Create"? "d-none ":"")rounded-circle fixed-img-height align" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">@Html.DisplayNameFor(Model => Model.Logo)</label>
+            <input class="form-control" type="file" accept="image/*" asp-for="File" onchange="previewImage(event)" />
+            <span asp-validation-for="File" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">@Html.DisplayNameFor(Model => Model.Name)</label>
+            <input class="form-control" type="text" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">@Html.DisplayNameFor(Model => Model.Description)</label>
+            <input class="form-control" type="text" asp-for="Description" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3 d-flex justify-content-between">
+            <input class=" btn btn-outline-dark" type="submit" value="Save" />
+            <button class="btn btn-outline-dark" asp-action="Index">Show All</button>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    <script>
+                function previewImage(event) {
+            var reader = new FileReader(); // built-in browser API to read files
+            reader.onload = function () {
+                var preview = document.getElementById('preview');
+                preview.src = reader.result;   // data URL of the image
+                preview.classList.remove("d-none");
+            }
+            reader.readAsDataURL(event.target.files[0]); // read the first selected file
+        }
+
+    </script>
+}

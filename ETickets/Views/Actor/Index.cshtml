@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Actor>
+@{
+    ViewBag.Title = "Actors";
+}
+<div class="container d-flex justify-content-between align-items-center">
+    <h1 class="offcanvas-header">List of all Actors</h1>
+    <div>
+        <a class="btn btn-success mb-3" asp-action="AddEdit">
+            <i class="bi bi-plus"></i>Add Actor
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-9 mx-auto">
+        <table class="table table-responsive">
+            <thead>
+                <tr class="text-center">
+                    <td class="fw-bold">@Html.DisplayNameFor(model => model.ProfilePicture)</td>
+                    <td class="fw-bold">@Html.DisplayNameFor(Model => Model.FullName)</td>
+                    <td class="fw-bold">@Html.DisplayNameFor(Model => Model.Bio)</td>
+                    <td class="fw-bold">@Html.DisplayNameFor(Model => Model.Movies)</td>
+                    <td class="fw-bold">Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var actor in Model)
+                {
+                    <tr class="align-middle text-center">
+                        <td><img src="@Url.Content("~/Images/" + @actor.ProfilePicture)" alt="@actor.FullName" class="img-thumbnail rounded-circle fixed-img-height" /></td>
+                        <td>@Html.DisplayFor(model => actor.FullName)</td>
+                        <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">@Html.DisplayFor(Model => actor.Bio)</td>
+                        <td>
+                            <ul>
+                                @foreach (var item in actor.Movies)
+                                {
+                                    <li>@Html.DisplayFor(Model => item.Name)</li>
+                                }
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@actor.Id"><i class="bi bi-eye"></i> Details</a> |
+                            <a class="btn btn-sm btn-primary" asp-action="AddEdit" asp-route-id="@actor.Id"><i class="bi bi-pencil-square"></i> Edit</a> |
+                            <form class="form-check-inline d-inline" asp-action="Delete" method="post" asp-route-id="@actor.Id" onsubmit="return confirmDelete()">
+                                <button
+                                    class="btn btn-sm btn-danger" type="submit">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script>
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this actor?');
+        }
+    </script>
+}
