@@ -4728,11 +4728,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sheraz Butt\\source\\repos\\ETickets\\ETickets\\ETickets.csproj",
+      "projectUniqueName": "C:\\Users\\Sheraz Butt\\source\\repos\\ASP.net-Core-MVC-Projects\\ETickets\\ETickets.csproj",
       "projectName": "ETickets",
-      "projectPath": "C:\\Users\\Sheraz Butt\\source\\repos\\ETickets\\ETickets\\ETickets.csproj",
+      "projectPath": "C:\\Users\\Sheraz Butt\\source\\repos\\ASP.net-Core-MVC-Projects\\ETickets\\ETickets.csproj",
       "packagesPath": "C:\\Users\\Sheraz Butt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sheraz Butt\\source\\repos\\ETickets\\ETickets\\obj\\",
+      "outputPath": "C:\\Users\\Sheraz Butt\\source\\repos\\ASP.net-Core-MVC-Projects\\ETickets\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -2,59 +2,70 @@
 @{
     ViewBag.Title = "Movies";
 }
-<div class="row mx-auto">
-    @foreach (var movie in Model)
-    {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3" style="max-width: 540px">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-header text-white bg-info">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @Html.DisplayFor(Model => movie.Name)
-                                    <a class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
-                                </h5>
-                            </p>
+@if (Model.Count() == 0)
+{
+    <div><h3 class="alert alert-danger text-center">@ViewBag.SearchString not found!</h3></div>
+}
+else
+{
+
+    <a asp-action="AddEdit" type="button" class="btn btn-primary rounded-circle fab">
+        <i class="bi bi-plus"></i>
+    </a>
+    <div class="row mx-auto">
+        @foreach (var movie in Model)
+        {
+            <div class="col-md-4 col-xs-6 border-primary mb-3">
+                <div class="card mb-3" style="max-width: 540px">
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="card-header text-white bg-info">
+                                <p class="card-text">
+                                    <h5 class="card-title">
+                                        @Html.DisplayFor(Model => movie.Name)
+                                        <a asp-action="AddEdit" asp-route-id="@movie.Id" class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
+                                    </h5>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="@Url.Content("~/Images/" + @movie.Image)" alt="@movie.Name" class="w-100" />
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <p class="card-text">@Html.DisplayFor(Model => movie.Description)</p>
-                            <p class="card-text"><b>Cinema: </b>@Html.DisplayFor(Model => movie.Cinema.Name)</p>
-                            <p class="card-text"><b>Category: </b>@Html.DisplayFor(Model => movie.MovieCategory)</p>
-                            <p class="card-text"><b>Start Date: </b>@movie.StartDate.ToString("dd MMM yy")</p>
-                            <p class="card-text"><b>End Date: </b>@movie.EndDate.ToString("dd MMM yy")</p>
-                            <p class="card-text">
-                                <b>Status: </b>
-                                @if (DateTime.Now >= movie.StartDate && DateTime.Now <= movie.EndDate)
-                                {
-                                    <span class="badge bg-success text-white">Available</span>
-                                }
-                                else if (DateTime.Now > movie.EndDate)
-                                {
-                                    <span class="badge bg-danger text-white">Expired</span>
-                                }
-                                else
-                                {
-                                    <span class="badge bg-primary text-white">Upcoming</span>
-                                }
-                            </p>
+                        <div class="col-md-6">
+                            <img src="@Url.Content("~/Images/" + @movie.Image)" alt="@movie.Name" class="w-100" />
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card-footer">
-                            <p class="card-text">
-                                <a class="btn btn-primary"><i class="bi bi-eye-fill"></i> Show Details</a>
-                                <a class="btn btn-success"><i class="bi bi-cart-plus"></i> Add to cart (Price: @movie.Price.ToString("C"))</a>
-                            </p>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <p class="card-text">@Html.DisplayFor(Model => movie.Description)</p>
+                                <p class="card-text"><b>Cinema: </b>@Html.DisplayFor(Model => movie.Cinema.Name)</p>
+                                <p class="card-text"><b>Category: </b>@Html.DisplayFor(Model => movie.MovieCategory)</p>
+                                <p class="card-text"><b>Start Date: </b>@movie.StartDate.ToString("dd MMM yy")</p>
+                                <p class="card-text"><b>End Date: </b>@movie.EndDate.ToString("dd MMM yy")</p>
+                                <p class="card-text">
+                                    <b>Status: </b>
+                                    @if (DateTime.Now >= movie.StartDate && DateTime.Now <= movie.EndDate)
+                                    {
+                                        <span class="badge bg-success text-white">Available</span>
+                                    }
+                                    else if (DateTime.Now > movie.EndDate)
+                                    {
+                                        <span class="badge bg-danger text-white">Expired</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-primary text-white">Upcoming</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card-footer">
+                                <p class="card-text">
+                                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@movie.Id"><i class="bi bi-eye-fill"></i> Show Details</a>
+                                    <a class="btn btn-success"><i class="bi bi-cart-plus"></i> Add to cart (Price: @movie.Price.ToString("C"))</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}

@@ -41,7 +41,7 @@ namespace ETickets.Models
 
         [Required]
         [Display(Name = "Select Actors")]
-        public ICollection<Actor> Actors { get; set; }
+        public ICollection<Actor> Actors { get; set; } = new List<Actor>();
 
         [Required]
         public int CinemaId { get; set; }
