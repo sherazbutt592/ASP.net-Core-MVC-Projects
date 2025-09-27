@@ -1,4 +1,4 @@
-﻿namespace ETickets.Data.Enum
+﻿namespace ETickets.Data.Enums
 {
     public enum MovieCategory
     {

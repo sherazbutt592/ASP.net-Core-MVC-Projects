@@ -1,0 +1,10 @@
+﻿@model int
+<li>
+    <a asp-controller="Orders" asp-action="ShoppingCart">
+        <i class="bi bi-cart4"></i>
+        @if (Model > 0)
+        {
+            <sup><span class="badge bg-danger rounded-circle">@Model</span></sup>
+        }
+    </a>
+</li>

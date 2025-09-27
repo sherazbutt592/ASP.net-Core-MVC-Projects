@@ -4,6 +4,7 @@ using ETickets.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ETickets.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250928085140_AddedOrderTable")]
+    partial class AddedOrderTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -336,31 +339,6 @@ namespace ETickets.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ETickets.Models.ShoppingCartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShoppingCartId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
-
             modelBuilder.Entity("ActorMovie", b =>
                 {
                     b.HasOne("ETickets.Models.Actor", null)
@@ -412,17 +390,6 @@ namespace ETickets.Migrations
                     b.Navigation("Movie");
 
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("ETickets.Models.ShoppingCartItem", b =>
-                {
-                    b.HasOne("ETickets.Models.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("ETickets.Models.Cinema", b =>

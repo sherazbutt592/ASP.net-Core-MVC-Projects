@@ -1,4 +1,6 @@
 using ETickets.Data;
+using ETickets.Data.Cart;
+using ETickets.Data.Services;
 using ETickets.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,10 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection String 'Default Connection' not found");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString)); //by default it is added as scoped
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IOrderService), typeof(OrderService));
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped (sp => ShoppingCart.GetShoppingCart(sp) );
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -24,6 +30,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 

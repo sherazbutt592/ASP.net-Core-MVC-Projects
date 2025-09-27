@@ -1,0 +1,43 @@
+﻿@model List<Order>
+@{
+    ViewBag.Title = "My Orders";
+}
+<div class="row">
+    <div class="col-md-8">
+        <p>
+            <h4>List of all orders</h4>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Email</th>
+                    <th>User Id</th>
+                    <th>Items</th>
+                    <th>Total Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.Email</td>
+                        <td>@order.UserId</td>
+                        <td>
+                            @foreach (var item in order.OrderItems)
+                            {
+                                <ul>
+                                    <li>
+                                        @item.Movie.Name [@item.Amount x @item.Price $]]
+                                    </li>
+                                </ul>
+                            }
+                        </td>
+                        <td>@order.OrderItems.Select(m => m.Movie.Price * m.Amount).Sum().ToString()</td>
+                    </tr>
+                }
+            </tbody>
+    </div>
+</div>

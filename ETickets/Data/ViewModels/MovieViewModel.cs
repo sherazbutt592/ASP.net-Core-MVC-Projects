@@ -1,7 +1,7 @@
-﻿using ETickets.Data.Enum;
+﻿using ETickets.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace ETickets.Models
+namespace ETickets.Data.ViewModels
 {
     public class MovieViewModel
     {

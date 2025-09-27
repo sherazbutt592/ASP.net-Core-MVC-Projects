@@ -1,5 +1,5 @@
 ﻿using ETickets.Data;
-using ETickets.Data.Enum;
+using ETickets.Data.Enums;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

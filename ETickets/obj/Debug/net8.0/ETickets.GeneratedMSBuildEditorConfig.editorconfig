@@ -68,6 +68,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Orders/CompleteOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENvbXBsZXRlT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Orders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Orders/ShoppingCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXFNob3BwaW5nQ2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Producer/AddEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcQWRkRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -78,6 +90,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Producer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Shared/Components/ShoppingCartCount/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2hvcHBpbmdDYXJ0Q291bnRcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Shared/Error.cshtml]

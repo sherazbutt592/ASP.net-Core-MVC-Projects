@@ -1,0 +1,52 @@
+﻿@using ETickets.Data.ViewModels
+@model ShoppingCartViewModel
+@{
+    ViewBag.Titel = "Shopping Cart Summary";
+}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="text-center">
+            <h2>Shopping Cart</h2>
+        </div>
+        <table class="table">
+            <thead>
+            <th>Selected amount</th>
+            <th>Movie</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+            <th></th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+                {
+                    <tr>
+                        <td class="align-middle">@item.Amount</td>
+                        <td class="align-middle">@item.Movie.Name</td>
+                        <td class="align-middle">@item.Movie.Price.ToString("C")</td>
+                        <td class="align-middle">@((item.Amount * item.Movie.Price).ToString("C"))</td>
+                        <td class="align-middle d-flex justify-content-between">
+                            <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Movie.Id">
+                                <i class="bi bi-cart-dash"></i>
+                            </a>
+                            <a class="text-success" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Movie.Id">
+                                <i class="bi bi-cart-plus"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                    <td colspan="2">@Model.ShoppingCartTotal.ToString("C")</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center">
+            <div class="btn-group">
+                <a class="btn btn-outline-success" asp-action="CompleteOrder">CheckOut</a>
+                <a class="btn btn-outline-success" asp-controller="Movie" asp-action="Index">Add more items</a>
+            </div>
+        </div>
+    </div>
+</div>

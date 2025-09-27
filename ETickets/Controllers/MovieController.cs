@@ -1,5 +1,6 @@
 ﻿using ETickets.Data;
-using ETickets.Data.Enum;
+using ETickets.Data.Enums;
+using ETickets.Data.ViewModels;
 using ETickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
