@@ -42,11 +42,47 @@
                 </tr>
             </tfoot>
         </table>
-        <div class="text-center">
-            <div class="btn-group">
-                <a class="btn btn-outline-success" asp-action="CompleteOrder">CheckOut</a>
-                <a class="btn btn-outline-success" asp-controller="Movie" asp-action="Index">Add more items</a>
+            <div class="d-flex justify-content-around">
+                <div class="mx-2 btn" id="paypal-btn"></div>
+                <div>
+                <a class="btn btn-outline-success mx-2" asp-controller="Movie" asp-action="Index">Add more items</a>
+
+                </div>
             </div>
-        </div>
     </div>
 </div>
+@section Scripts{
+    <script src="https://www.paypal.com/sdk/js?client-id=AY94aH0FisBsxCMca3jgCVRfbDjVB24L_LnnfWP7NwGWJ7tnFnwAwXKIZI1IdAYwl5ecTBCrZffi3x84"></script>
+    <script>
+        let _total = @Html.Raw(Model.ShoppingCartTotal);
+
+        paypal.Buttons({
+            style: {
+                size: "small",   
+                color: "gold",
+                shape: "pill"
+            },
+
+            // Create order
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: _total
+                        }
+                    }]
+                });
+            },
+
+            // Capture order
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    // Redirect after successful payment
+                    var url = "@Url.Action("CompleteOrder", "Orders")";
+                    window.location.href = url;
+                });
+            }
+
+        }).render("#paypal-btn"); // renders button inside your div
+    </script>
+}

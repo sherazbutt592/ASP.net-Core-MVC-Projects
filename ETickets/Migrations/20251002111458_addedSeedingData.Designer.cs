@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ETickets.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250919151046_AddedSeedingData")]
-    partial class AddedSeedingData
+    [Migration("20251002111458_addedSeedingData")]
+    partial class addedSeedingData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,16 +52,6 @@ namespace ETickets.Migrations
                         },
                         new
                         {
-                            ActorsId = 1,
-                            MoviesId = 3
-                        },
-                        new
-                        {
-                            ActorsId = 2,
-                            MoviesId = 3
-                        },
-                        new
-                        {
                             ActorsId = 3,
                             MoviesId = 3
                         });
@@ -95,22 +85,22 @@ namespace ETickets.Migrations
                         new
                         {
                             Id = 1,
-                            Bio = "This is the bio for the first actor",
-                            FullName = "Actor 1",
+                            Bio = "Action star",
+                            FullName = "Tom",
                             ProfilePicture = "actor1.jpg"
                         },
                         new
                         {
                             Id = 2,
-                            Bio = "This is the bio for the second actor",
-                            FullName = "Actor 2",
+                            Bio = "Comedy Star",
+                            FullName = "Jack",
                             ProfilePicture = "actor2.jpg"
                         },
                         new
                         {
                             Id = 3,
-                            Bio = "This is the bio for the third actor",
-                            FullName = "Actor 3",
+                            Bio = "Mystery Start",
+                            FullName = "John",
                             ProfilePicture = "actor3.jpg"
                         });
                 });
@@ -143,23 +133,23 @@ namespace ETickets.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "This is the description for the first cinema",
+                            Description = "Main city cinema",
                             Logo = "cinema1.jpg",
-                            Name = "Cinema 1"
+                            Name = "Cinema One"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "This is the description for the second cinema",
-                            Logo = "cinema3.jpg",
-                            Name = "Cinema 2"
+                            Description = "Suburb cinema",
+                            Logo = "cinema2.jpg",
+                            Name = "Cinema Two"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "This is the description for the third cinema",
+                            Description = "New cinema",
                             Logo = "cinema3.jpg",
-                            Name = "Cinema 3"
+                            Name = "Cinema Three"
                         });
                 });
 
@@ -214,41 +204,91 @@ namespace ETickets.Migrations
                         {
                             Id = 1,
                             CinemaId = 1,
-                            Description = "This is the description of first movie",
-                            EndDate = new DateTime(2025, 9, 26, 20, 10, 44, 901, DateTimeKind.Local).AddTicks(3240),
+                            Description = "An exciting action movie.",
+                            EndDate = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "movie1.jpg",
                             MovieCategory = 0,
-                            Name = "Movie 1",
-                            Price = 30.0,
-                            ProducerId = 2,
-                            StartDate = new DateTime(2025, 9, 19, 20, 10, 44, 899, DateTimeKind.Local).AddTicks(7878)
+                            Name = "Action Movie",
+                            Price = 12.99,
+                            ProducerId = 1,
+                            StartDate = new DateTime(2025, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             CinemaId = 2,
-                            Description = "This is the description of second movie",
-                            EndDate = new DateTime(2025, 9, 26, 20, 10, 44, 901, DateTimeKind.Local).AddTicks(3732),
+                            Description = "A hilarious comedy.",
+                            EndDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "movie2.jpg",
                             MovieCategory = 2,
-                            Name = "Movie 2",
-                            Price = 45.0,
+                            Name = "Comedy Movie",
+                            Price = 10.99,
                             ProducerId = 2,
-                            StartDate = new DateTime(2025, 9, 19, 20, 10, 44, 901, DateTimeKind.Local).AddTicks(3729)
+                            StartDate = new DateTime(2025, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             CinemaId = 3,
-                            Description = "This is the description of third movie",
-                            EndDate = new DateTime(2025, 9, 26, 20, 10, 44, 901, DateTimeKind.Local).AddTicks(3739),
+                            Description = "A Masterpiece Mystery.",
+                            EndDate = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "movie3.jpg",
-                            MovieCategory = 0,
-                            Name = "Movie 3",
-                            Price = 40.0,
+                            MovieCategory = 4,
+                            Name = "Mystery Movie",
+                            Price = 10.99,
                             ProducerId = 3,
-                            StartDate = new DateTime(2025, 9, 19, 20, 10, 44, 901, DateTimeKind.Local).AddTicks(3738)
+                            StartDate = new DateTime(2025, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("ETickets.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ETickets.Models.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("ETickets.Models.Producer", b =>
@@ -279,24 +319,49 @@ namespace ETickets.Migrations
                         new
                         {
                             Id = 1,
-                            Bio = "This is the bio for the first Producer",
-                            FullName = "Producer 1",
+                            Bio = "Award-winning producer",
+                            FullName = "John Producer",
                             ProfilePicture = "producer1.jpg"
                         },
                         new
                         {
                             Id = 2,
-                            Bio = "This is the bio for the second Producer",
-                            FullName = "Producer 2",
+                            Bio = "Indie film expert",
+                            FullName = "Jane Producer",
                             ProfilePicture = "producer2.jpg"
                         },
                         new
                         {
                             Id = 3,
-                            Bio = "This is the bio for the third Producer",
-                            FullName = "Producer 3",
+                            Bio = "CGI film expert",
+                            FullName = "Joy Producer",
                             ProfilePicture = "producer3.jpg"
                         });
+                });
+
+            modelBuilder.Entity("ETickets.Models.ShoppingCartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShoppingCartId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("ActorMovie", b =>
@@ -333,9 +398,44 @@ namespace ETickets.Migrations
                     b.Navigation("Producer");
                 });
 
+            modelBuilder.Entity("ETickets.Models.OrderItem", b =>
+                {
+                    b.HasOne("ETickets.Models.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ETickets.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("ETickets.Models.ShoppingCartItem", b =>
+                {
+                    b.HasOne("ETickets.Models.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("ETickets.Models.Cinema", b =>
                 {
                     b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("ETickets.Models.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("ETickets.Models.Producer", b =>

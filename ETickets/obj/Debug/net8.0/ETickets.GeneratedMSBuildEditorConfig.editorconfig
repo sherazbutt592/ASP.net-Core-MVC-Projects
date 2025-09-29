@@ -17,101 +17,101 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ETickets
 build_property.RootNamespace = ETickets
-build_property.ProjectDir = C:\Users\Sheraz Butt\source\repos\ASP.net-Core-MVC-Projects\ETickets\
+build_property.ProjectDir = F:\github_repository\ETickets\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Sheraz Butt\source\repos\ASP.net-Core-MVC-Projects\ETickets
+build_property.MSBuildProjectDirectory = F:\github_repository\ETickets
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Actor/AddEdit.cshtml]
+[F:/github_repository/ETickets/Views/Actor/AddEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcQWRkRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Actor/Details.cshtml]
+[F:/github_repository/ETickets/Views/Actor/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Actor/Index.cshtml]
+[F:/github_repository/ETickets/Views/Actor/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Cinema/AddEdit.cshtml]
+[F:/github_repository/ETickets/Views/Cinema/AddEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXEFkZEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Cinema/Index.cshtml]
+[F:/github_repository/ETickets/Views/Cinema/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Home/Index.cshtml]
+[F:/github_repository/ETickets/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Home/Privacy.cshtml]
+[F:/github_repository/ETickets/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Movie/AddEdit.cshtml]
+[F:/github_repository/ETickets/Views/Movie/AddEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQWRkRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Movie/Details.cshtml]
+[F:/github_repository/ETickets/Views/Movie/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Movie/Index.cshtml]
+[F:/github_repository/ETickets/Views/Movie/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Orders/CompleteOrder.cshtml]
+[F:/github_repository/ETickets/Views/Orders/CompleteOrder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENvbXBsZXRlT3JkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Orders/Index.cshtml]
+[F:/github_repository/ETickets/Views/Orders/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Orders/ShoppingCart.cshtml]
+[F:/github_repository/ETickets/Views/Orders/ShoppingCart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXFNob3BwaW5nQ2FydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Producer/AddEdit.cshtml]
+[F:/github_repository/ETickets/Views/Producer/AddEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcQWRkRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Producer/Details.cshtml]
+[F:/github_repository/ETickets/Views/Producer/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Producer/Index.cshtml]
+[F:/github_repository/ETickets/Views/Producer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Shared/Components/ShoppingCartCount/Default.cshtml]
+[F:/github_repository/ETickets/Views/Shared/Components/ShoppingCartCount/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2hvcHBpbmdDYXJ0Q291bnRcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Shared/Error.cshtml]
+[F:/github_repository/ETickets/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/github_repository/ETickets/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/_ViewImports.cshtml]
+[F:/github_repository/ETickets/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/_ViewStart.cshtml]
+[F:/github_repository/ETickets/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sheraz Butt/source/repos/ASP.net-Core-MVC-Projects/ETickets/Views/Shared/_Layout.cshtml]
+[F:/github_repository/ETickets/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-oxlfx02eaz
