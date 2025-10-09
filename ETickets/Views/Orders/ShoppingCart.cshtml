@@ -10,11 +10,13 @@
         </div>
         <table class="table">
             <thead>
-            <th>Selected amount</th>
-            <th>Movie</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-            <th></th>
+                <tr>
+                    <th>Selected amount</th>
+                    <th>Movie</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
@@ -42,23 +44,23 @@
                 </tr>
             </tfoot>
         </table>
-            <div class="d-flex justify-content-around">
-                <div class="mx-2 btn" id="paypal-btn"></div>
-                <div>
+        <div class="d-flex justify-content-around">
+            <div class="mx-2 btn" id="paypal-btn"></div>
+            <div>
                 <a class="btn btn-outline-success mx-2" asp-controller="Movie" asp-action="Index">Add more items</a>
 
-                </div>
             </div>
+        </div>
     </div>
 </div>
-@section Scripts{
+@section Scripts {
     <script src="https://www.paypal.com/sdk/js?client-id=AY94aH0FisBsxCMca3jgCVRfbDjVB24L_LnnfWP7NwGWJ7tnFnwAwXKIZI1IdAYwl5ecTBCrZffi3x84"></script>
     <script>
         let _total = @Html.Raw(Model.ShoppingCartTotal);
 
         paypal.Buttons({
             style: {
-                size: "small",   
+                size: "small",
                 color: "gold",
                 shape: "pill"
             },
