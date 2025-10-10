@@ -40,12 +40,20 @@
                         <input type="text" name="searchString" class="form-control" placeholder="Search for a movie..." />
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
-                    <ul class="navbar-nav">
+
+                    @* ShoppinCart *@
+                    <ul class="navbar-nav mx-2">
                         @await Component.InvokeAsync("ShoppingCartCount")
                     </ul>
+
+                    @* Login *@
+                    <a class="btn btn-outline-success mx-2 my-2 my-sm-0" asp-controller="Account" asp-action="Login">
+                        <i class="bi bi-box-arrow-in-right"></i> Log in
+                    </a>
+
                     @*user profile section*@
                     <div class="dropdown">
-                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-bs-toggle ="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-success dropdown-toggle mx-2" type="button" id="profile-btn" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-badge"></i>Hello
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="profile-btn">

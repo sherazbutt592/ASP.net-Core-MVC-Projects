@@ -1,0 +1,32 @@
+﻿@using ETickets.Data.ViewModels
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<div class="row ">
+    <div class="col-md-6 mx-auto">
+        <p>
+            <h4 class="text-center">Log in to your Account</h4>
+        </p>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <form asp-controller="Account" asp-action="Login" method="post">
+                    <div class="mb-3">
+                        <lable class="form-label">@Html.DisplayNameFor(Model => Model.EmailAddress)</lable>
+                        <input class="form-control" type="email" asp-for="EmailAddress" />
+                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                    </div>    
+                    <div class="mb-3">
+                        <lable class="form-label">Password</lable>
+                        <input class="form-control" type="password" asp-for="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div> 
+                    <div class="mb-3 d-flex justify-content-between">
+                        <input type="submit" class="btn btn-outline-success" value="Log in"/>
+                        <a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

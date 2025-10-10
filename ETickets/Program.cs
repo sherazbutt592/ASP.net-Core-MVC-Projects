@@ -2,6 +2,8 @@ using ETickets.Data;
 using ETickets.Data.Cart;
 using ETickets.Data.Services;
 using ETickets.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +16,13 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IOrderService), typeof(OrderService));
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped (sp => ShoppingCart.GetShoppingCart(sp) );
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddMemoryCache();
 builder.Services.AddSession();
+builder.Services.AddAuthentication(options =>
+    { options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme; }
+);
 
 var app = builder.Build();
 
@@ -32,6 +40,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseSession();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
