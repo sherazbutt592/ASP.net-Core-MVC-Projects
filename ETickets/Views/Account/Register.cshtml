@@ -1,0 +1,49 @@
+﻿@using ETickets.Data.ViewModels
+@model RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<div class="row ">
+    <div class="col-md-6 mx-auto">
+        <p>
+            <h4 class="text-center">Sign up for a new Account</h4>
+        </p>
+        @if(TempData["Error"] != null)
+        {
+            <div class="alert alert-danger text-center">
+                @TempData["Error"]
+            </div>
+        }
+        
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <form asp-controller="Account" asp-action="Register" method="post">
+                    <div class="mb-3">
+                        <lable class="form-label">@Html.DisplayNameFor(Model => Model.FullName)</lable>
+                        <input class="form-control" type="text" asp-for="FullName" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>    
+                    <div class="mb-3">
+                        <lable class="form-label">@Html.DisplayNameFor(Model => Model.EmailAddress)</lable>
+                        <input class="form-control" type="email" asp-for="EmailAddress" />
+                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                    </div>    
+                    <div class="mb-3">
+                        <lable class="form-label">Password</lable>
+                        <input class="form-control" type="password" asp-for="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div> 
+                    <div class="mb-3">
+                        <lable class="form-label">@Html.DisplayNameFor(Model=> Model.ConfirmPassword)</lable>
+                        <input class="form-control" type="password" asp-for="ConfirmPassword" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div> 
+                    <div class="mb-3 d-flex justify-content-between">
+                        <input type="submit" class="btn btn-outline-success" value="Sign up"/>
+                        <a class="btn btn-outline-secondary" asp-controller="Movie" asp-action="Index">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

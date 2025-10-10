@@ -43,6 +43,8 @@ namespace ETickets.Controllers
             }
             TempData["Error"] = "Wrong Credentials. Please try again!";
             return View(model);
-        } 
+        }
+        public IActionResult Register() => View(new RegisterViewModel());
+
     }
 } 
