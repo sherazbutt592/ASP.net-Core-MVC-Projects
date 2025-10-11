@@ -45,28 +45,7 @@
                     <ul class="navbar-nav mx-2">
                         @await Component.InvokeAsync("ShoppingCartCount")
                     </ul>
-
-                    @* Login *@
-                    <a class="btn btn-outline-success mx-2 my-2 my-sm-0" asp-controller="Account" asp-action="Login">
-                        <i class="bi bi-box-arrow-in-right"></i> Log in
-                    </a>
-
-                    @* Register *@
-                    <a class="btn btn-outline-success mx-2 my-2 my-sm-0" asp-controller="Account" asp-action="Register">
-                        <i class="bi bi-person-plus"></i> Register
-                    </a>
-
-                    @*user profile section*@
-                    <div class="dropdown">
-                        <button class="btn btn-outline-success dropdown-toggle mx-2" type="button" id="profile-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-badge"></i>Hello
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="profile-btn">
-                            <li>
-                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">Orders</a>
-                            </li>
-                        </ul>
-                    </div>
+                    @await Html.PartialAsync("_Identity")
                 </div>
             </div>
         </nav>

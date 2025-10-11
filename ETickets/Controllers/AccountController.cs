@@ -22,7 +22,7 @@ namespace ETickets.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
@@ -32,8 +32,8 @@ namespace ETickets.Controllers
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, model.Password);
                 if (passwordCheck)
                 {
-                    var result =await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
-                    if(result.Succeeded)
+                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+                    if (result.Succeeded)
                     {
                         return RedirectToAction("Index", "Movies");
                     }
@@ -45,6 +45,35 @@ namespace ETickets.Controllers
             return View(model);
         }
         public IActionResult Register() => View(new RegisterViewModel());
-
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await _userManager.FindByEmailAsync(model.EmailAddress);
+            if (user != null)
+            {
+                TempData["Error"] = "This email address is already in use";
+                return View(model);
+            }
+            var newUser = new ApplicationUser()
+            {
+                FullName = model.FullName,
+                Email = model.EmailAddress,
+                UserName = model.EmailAddress
+            };
+            var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
+            //if (newUserResponse.Succeeded)
+                //await _userManager.AddToRoleAsync(newUser, UserRoles.user);
+            return View("RegisterCompleted");
+        }
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Movie");
+        }
     }
-} 
+}
