@@ -8,10 +8,12 @@
 }
 else
 {
-
-    <a asp-action="AddEdit" type="button" class="btn btn-primary rounded-circle fab">
-        <i class="bi bi-plus"></i>
-    </a>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a asp-action="AddEdit" type="button" class="btn btn-primary rounded-circle fab">
+            <i class="bi bi-plus"></i>
+        </a>
+    }
     <div class="row mx-auto">
         @foreach (var movie in Model)
         {
@@ -23,7 +25,10 @@ else
                                 <p class="card-text">
                                     <h5 class="card-title">
                                         @Html.DisplayFor(Model => movie.Name)
-                                        <a asp-action="AddEdit" asp-route-id="@movie.Id" class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                        {
+                                            <a asp-action="AddEdit" asp-route-id="@movie.Id" class="text-white float-end"><i class="bi bi-pencil-square"></i></a>
+                                        }
                                     </h5>
                                 </p>
                             </div>

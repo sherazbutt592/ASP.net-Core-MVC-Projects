@@ -74,7 +74,8 @@
             <ol class="form-control" style="padding-left:25px;">
                 @foreach (var item in ViewBag.Actors)
                 {
-                    if(Model.ActorIds.Contains(item.Id)){
+                    if (Model.ActorIds.Contains(item.Id))
+                    {
                         <li>@item.FullName</li>
                     }
                 }
@@ -90,7 +91,10 @@
     </div>
     <div class="col-md-12">
         <div class="mt-3 d-flex justify-content-between">
-            <a class="btn btn-outline-dark" asp-action="AddEdit" asp-route-id="@Model.Id">Edit</a>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <a class="btn btn-outline-dark" asp-action="AddEdit" asp-route-id="@Model.Id">Edit</a>
+            }
             <a class="btn btn-outline-dark" asp-action="Index">Show All</a>
         </div>
     </div>

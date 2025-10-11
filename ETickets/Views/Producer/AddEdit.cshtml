@@ -7,7 +7,7 @@
     <form asp-action="AddEdit" asp-controller="Producer" method="post" enctype="multipart/form-data">
         @* preview Image *@
         <div class="mb-3 d-flex justify-content-center">
-            <img src="@Url.Content("~/Images/" + @Model.ProfilePicture)" alt="Preview Image" id="preview" class="@(ViewBag.Operation == "Create"? "d-none ":"")rounded-circle fixed-img-height align" />
+            <img src="@Url.Content("~/Images/" + @Model.ProfilePicture)" alt="Preview Image" id="preview" class="@(ViewBag.Operation == "Create" ? "d-none " : "")rounded-circle fixed-img-height align" />
         </div>
         <div class="mb-3">
             <label class="form-label">@Html.DisplayNameFor(Model => Model.ProfilePicture)</label>
@@ -30,6 +30,7 @@
         </div>
     </form>
 </div>
+
 @section Scripts {
     <script>
                 function previewImage(event) {

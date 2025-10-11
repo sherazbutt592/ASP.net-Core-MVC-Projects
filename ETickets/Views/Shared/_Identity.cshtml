@@ -1,27 +1,35 @@
-﻿@* Login *@
-<a class="btn btn-outline-success mx-2 my-2 my-sm-0" asp-controller="Account" asp-action="Login">
-    <i class="bi bi-box-arrow-in-right"></i> Log in
-</a>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager;
+@if(!User.Identity.IsAuthenticated)
+{
 
-@* Register *@
-<a class="btn btn-outline-success mx-2 my-2 my-sm-0" asp-controller="Account" asp-action="Register">
-    <i class="bi bi-person-plus"></i> Register
-</a>
+    @* Login *@
+    <a class="btn btn-outline-success mx-2 my-2 my-sm-0" asp-controller="Account" asp-action="Login">
+        <i class="bi bi-box-arrow-in-right"></i> Log in
+    </a>
 
-@*user profile section*@
-<div class="dropdown">
-    <button class="btn btn-outline-success dropdown-toggle mx-2" type="button" id="profile-btn" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="bi bi-person-badge"></i>Hello
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="profile-btn">
-        <li>
-            <a class="dropdown-item" asp-controller="Orders" asp-action="Index">Orders</a>
-        </li>
-    </ul>
-</div>
+    @* Register *@
+    <a class="btn btn-outline-success mx-2 my-2 my-sm-0" asp-controller="Account" asp-action="Register">
+        <i class="bi bi-person-plus"></i> Register
+    </a>
+}
+else
+{
+    @*user profile section*@
+    <div class="dropdown">
+        <button class="btn btn-outline-success dropdown-toggle mx-2" type="button" id="profile-btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-badge"></i>Hello @UserManager.GetUserName(User)
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="profile-btn">
+            <li>
+                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">Orders</a>
+            </li>
+        </ul>
+    </div>
 
-<form asp-controller="Account" asp-action="Logout" method="post">
-    <button type="submit" class="btn btn-outline-danger mx-2 my-2 my-sm-0">
-        <i class="bi bi-box-arrow-in-right"> Log out</i>
-    </button>
-</form>
+    <form asp-controller="Account" asp-action="Logout" method="post">
+        <button type="submit" class="btn btn-outline-danger mx-2 my-2 my-sm-0">
+            <i class="bi bi-box-arrow-in-right"> Log out</i>
+        </button>
+    </form>
+}

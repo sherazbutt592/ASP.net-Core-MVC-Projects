@@ -1,6 +1,7 @@
 using ETickets.Data;
 using ETickets.Data.Cart;
 using ETickets.Data.Services;
+using ETickets.Data.Statics;
 using ETickets.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
@@ -25,6 +26,13 @@ builder.Services.AddAuthentication(options =>
 );
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await UserRoles.SeedUsersAndRolesAsync(services);
+}
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

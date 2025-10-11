@@ -1,4 +1,5 @@
 ﻿using ETickets.Data;
+using ETickets.Data.Statics;
 using ETickets.Data.ViewModels;
 using ETickets.Models;
 using Microsoft.AspNetCore.Identity;
@@ -35,7 +36,7 @@ namespace ETickets.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Movies");
+                        return RedirectToAction("Index", "Movie");
                     }
                 }
                 TempData["Error"] = "Wrong Credentials. Please try again!";
@@ -46,29 +47,42 @@ namespace ETickets.Controllers
         }
         public IActionResult Register() => View(new RegisterViewModel());
         [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
-            var user = await _userManager.FindByEmailAsync(model.EmailAddress);
-            if (user != null)
+
+            var existingUser = await _userManager.FindByEmailAsync(model.EmailAddress);
+            if (existingUser != null)
             {
                 TempData["Error"] = "This email address is already in use";
                 return View(model);
             }
-            var newUser = new ApplicationUser()
+
+            var newUser = new ApplicationUser
             {
                 FullName = model.FullName,
                 Email = model.EmailAddress,
                 UserName = model.EmailAddress
             };
-            var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
-            //if (newUserResponse.Succeeded)
-                //await _userManager.AddToRoleAsync(newUser, UserRoles.user);
-            return View("RegisterCompleted");
+
+            var result = await _userManager.CreateAsync(newUser, model.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                    ModelState.AddModelError(string.Empty, error.Description);
+
+                return View(model);
+            }
+
+            await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+            await _signInManager.SignInAsync(newUser, isPersistent: false);
+
+            return RedirectToAction("Index", "Movie");
         }
+
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
