@@ -1,11 +1,14 @@
 ﻿using ETickets.Data;
+using ETickets.Data.Statics;
 using ETickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 
 namespace ETickets.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ActorController : Controller
     {
         private AppDbContext _dbContext;
@@ -17,6 +20,7 @@ namespace ETickets.Controllers
             _repository = new Repository<Actor>(context);
             _webHostEnvironment = webHostEnvironment;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _repository.GetAllAsync(new QueryOptions<Actor> { Includes = "Movies" }));
@@ -36,6 +40,7 @@ namespace ETickets.Controllers
             }
         }
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var actor = await _repository.GetByIdAsync(id, new QueryOptions<Actor> { Includes = "Movies" });

@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager;
-@if(!User.Identity.IsAuthenticated)
+@if (!User.Identity.IsAuthenticated)
 {
 
     @* Login *@
@@ -21,8 +21,14 @@ else
             <i class="bi bi-person-badge"></i>Hello @UserManager.GetUserName(User)
         </button>
         <ul class="dropdown-menu" aria-labelledby="profile-btn">
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    <a class="dropdown-item" asp-controller="Account" asp-action="Users"><i class="bi bi-people"></i> Users</a>
+                </li>
+            }
             <li>
-                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">Orders</a>
+                <a class="dropdown-item" asp-controller="Orders" asp-action="Index"><i class="bi bi-list"></i> Orders</a>
             </li>
         </ul>
     </div>

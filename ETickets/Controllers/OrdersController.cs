@@ -1,19 +1,22 @@
 ﻿using ETickets.Data;
 using ETickets.Data.Cart;
 using ETickets.Data.Services;
+using ETickets.Data.Statics;
 using ETickets.Data.ViewModels;
 using ETickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ETickets.Controllers
 {
+    [Authorize(Roles =UserRoles.Admin)]
     public class OrdersController : Controller
     {
         private readonly IRepository<Movie> _movieRepository;
         private readonly IOrderService _orderService;
         private readonly ShoppingCart _shoppingCart;
-
-        public OrdersController(IRepository<Movie> repository, ShoppingCart shoppingCart, IOrderService orderService )
+        public OrdersController(IRepository<Movie> repository, ShoppingCart shoppingCart, IOrderService orderService)
         {
             _movieRepository = repository;
             _shoppingCart = shoppingCart;
@@ -22,8 +25,9 @@ namespace ETickets.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string userId = ""; // get user id
-            var orders = await _orderService.GetOrdersByUserIdAsync(userId);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                string userRole = User.FindFirstValue(ClaimTypes.Role);
+            var orders = await _orderService.GetOrdersByUserIdAndRoleAsync(userId, userRole);
             return View(orders);
         }
         public IActionResult ShoppingCart()
@@ -57,8 +61,8 @@ namespace ETickets.Controllers
         }
         public async Task<IActionResult> CompleteOrder()
         {
-            string userId = ""; 
-            string userEmailAddress = "";
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userEmailAddress = User.FindFirstValue(ClaimTypes.Email); ;
             var items = _shoppingCart.GetShoppingCartItems();
             await _orderService.StoreOrderAsync(items, userId, userEmailAddress);
             await _shoppingCart.ClearShoppingCart();

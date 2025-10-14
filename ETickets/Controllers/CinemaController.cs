@@ -1,10 +1,13 @@
 ﻿using AspNetCoreGeneratedDocument;
 using ETickets.Data;
+using ETickets.Data.Statics;
 using ETickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETickets.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class CinemaController : Controller
     {
         private AppDbContext _context;
@@ -17,7 +20,7 @@ namespace ETickets.Controllers
             _repository = new Repository<Cinema>(context);
             _webHostEnvironment = webHostEnvironment;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _repository.GetAllAsync(new QueryOptions<Cinema>() { Includes = "Movies"}));

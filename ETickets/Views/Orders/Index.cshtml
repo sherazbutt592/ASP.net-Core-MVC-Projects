@@ -11,8 +11,11 @@
             <thead>
                 <tr>
                     <th>Order Id</th>
-                    <th>Email</th>
-                    <th>User Id</th>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <th>Email</th>
+                        <th>User Id</th>
+}
                     <th>Items</th>
                     <th>Total Price</th>
                     <th></th>
@@ -23,8 +26,11 @@
                 {
                     <tr>
                         <td>@order.Id</td>
-                        <td>@order.Email</td>
-                        <td>@order.UserId</td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <td>@order.Email</td>
+                            <td>@order.UserId</td>
+    }
                         <td>
                             @foreach (var item in order.OrderItems)
                             {
@@ -39,5 +45,6 @@
                     </tr>
                 }
             </tbody>
+        </table>
     </div>
 </div>

@@ -1,12 +1,15 @@
 ﻿using ETickets.Data;
 using ETickets.Data.Enums;
+using ETickets.Data.Statics;
 using ETickets.Data.ViewModels;
 using ETickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace ETickets.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class MovieController : Controller
     {
         private AppDbContext _context;
@@ -24,11 +27,13 @@ namespace ETickets.Controllers
             _producerRepository = producer;
             _webHostEnvironment = webHostEnvironment;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var model = await _movieRepository.GetAllAsync(new QueryOptions<Movie> { Includes = "Actors, Cinema, Producer" });
             return View(model);
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Search(string searchString)
         {
             ViewBag.SearchString = searchString;
@@ -40,6 +45,7 @@ namespace ETickets.Controllers
             return View("Index", model);
         }
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Cinemas = await _cinemaRepository.GetAllAsync(new QueryOptions<Cinema>());

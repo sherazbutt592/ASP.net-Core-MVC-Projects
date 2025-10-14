@@ -2,8 +2,10 @@
 using ETickets.Data.Statics;
 using ETickets.Data.ViewModels;
 using ETickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace ETickets.Controllers
@@ -88,6 +90,14 @@ namespace ETickets.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Movie");
+        }
+        public async Task<IActionResult> Users()
+        {
+            return View(await _context.Users.ToListAsync());
+        }
+        public IActionResult AccessDenied(string ReturnUrl)
+        {
+            return View();
         }
     }
 }
